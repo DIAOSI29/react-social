@@ -7,10 +7,10 @@ import {
   //LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
   user: null

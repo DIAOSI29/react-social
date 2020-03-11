@@ -1,17 +1,18 @@
 import {
-  GET_POSTS,
-  POST_ERROR,
-  UPDATE_LIKES,
-  DELETE_POST,
-  ADD_POST,
-  GET_POST,
+  GET_EVENTS,
+  GET_MY_EVENTS,
+  EVENT_ERROR,
+  UPDATE_JOINS,
+  DELETE_EVENT,
+  ADD_EVENT,
+  GET_EVENT,
   ADD_COMMENT,
   REMOVE_COMMENT
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
-  posts: [],
-  post: null,
+  events: [],
+  event: null,
   loading: true,
   error: {}
 };
@@ -20,56 +21,62 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_POSTS:
+    case GET_EVENTS:
       return {
         ...state,
-        posts: payload,
+        events: payload,
         loading: false
       };
-    case GET_POST:
+    case GET_MY_EVENTS:
       return {
         ...state,
-        post: payload,
+        events: payload,
         loading: false
       };
-    case ADD_POST:
+    case GET_EVENT:
       return {
         ...state,
-        posts: [payload, ...state.posts],
+        event: payload,
         loading: false
       };
-    case DELETE_POST:
+    case ADD_EVENT:
       return {
         ...state,
-        posts: state.posts.filter(post => post._id !== payload),
+        events: [payload, ...state.events],
         loading: false
       };
-    case POST_ERROR:
+    case DELETE_EVENT:
+      return {
+        ...state,
+        events: state.events.filter(event => event._id !== payload),
+        loading: false
+      };
+    case EVENT_ERROR:
       return {
         ...state,
         error: payload,
         loading: false
       };
-    case UPDATE_LIKES:
+    case UPDATE_JOINS:
       return {
         ...state,
-        posts: state.posts.map(post =>
-          post._id === payload.id ? { ...post, likes: payload.likes } : post
+        events: state.events.map(event =>
+          event._id === payload.id ? { ...event, joins: payload.joins } : event
         ),
         loading: false
       };
     case ADD_COMMENT:
       return {
         ...state,
-        post: { ...state.post, comments: payload },
+        event: { ...state.event, comments: payload },
         loading: false
       };
     case REMOVE_COMMENT:
       return {
         ...state,
-        post: {
-          ...state.post,
-          comments: state.post.comments.filter(
+        event: {
+          ...state.event,
+          comments: state.event.comments.filter(
             comment => comment._id !== payload
           )
         },

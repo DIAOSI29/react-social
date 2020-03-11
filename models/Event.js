@@ -19,7 +19,7 @@ const EventSchema = new mongoose.Schema({
   },
 
   eventdate: {
-    type: Date
+    type: String
   },
 
   hour: {

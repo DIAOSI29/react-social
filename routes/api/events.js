@@ -76,6 +76,21 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// @route    GET api/events/me/:id
+// @desc     Get all events that has me involved
+// @access   Private
+router.get("/me/:id", auth, async (req, res) => {
+  try {
+    const events = await Event.find({
+      $or: [{ user: req.params.id }, { joins: { user: req.params.id } }]
+    }).sort({ date: -1 });
+    res.json(events);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route    GET api/events/:id
 // @desc     Get event by ID
 // @access   Private
@@ -124,7 +139,7 @@ router.delete("/:id", auth, async (req, res) => {
 });
 
 // @route    PUT api/events/join/:id
-// @desc     Like an event
+// @desc     Join an event
 // @access   Private
 router.put("/join/:id", auth, async (req, res) => {
   try {
