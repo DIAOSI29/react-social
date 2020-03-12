@@ -1,5 +1,2 @@
 {
-  "mongoURI": "mongodb+srv://tian:qtlz806169@tq-obynl.mongodb.net/PROJECT3?retryWrites=true&w=majority",
-  "jwtSecret": "secret",
-  "githubToken": "tianqin"
 }
