@@ -5,13 +5,10 @@ import Spinner from "../layout/Spinner";
 import EventItem from "./EventItem";
 import { getMyEvents } from "../../actions/event";
 
-const myEvents = ({
-  // getMyEvents, user,
-  events: { events, loading }
-}) => {
-  // useEffect(() => {
-  //   getMyEvents(user);
-  // }, []);
+const myEvents = ({ getMyEvents, user, events: { events, loading } }) => {
+  useEffect(() => {
+    getMyEvents(user);
+  }, []);
 
   return loading ? (
     <Spinner />
@@ -44,4 +41,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps, { getMyEvents })(myEvents);
+export default connect(mapStateToProps, { getMyEvents })(MyEvents);
