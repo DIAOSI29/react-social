@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 import EventItem from "./EventItem";
 import { getMyEvents } from "../../actions/event";
 
-const myEvents = ({ getMyEvents, user, events: { events, loading } }) => {
+const MyEvents = ({ getMyEvents, user, events: { events, loading } }) => {
   useEffect(() => {
     getMyEvents(user);
   }, []);
@@ -29,7 +29,7 @@ const myEvents = ({ getMyEvents, user, events: { events, loading } }) => {
   );
 };
 
-myEvents.propTypes = {
+MyEvents.propTypes = {
   // loadUser: PropTypes.func.isRequired,
   getMyEvents: PropTypes.func.isRequired,
   events: PropTypes.array.isRequired,
