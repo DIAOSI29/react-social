@@ -31,9 +31,9 @@ const MyEvents = ({ getMyEvents, user, events: { events, loading } }) => {
 
 MyEvents.propTypes = {
   // loadUser: PropTypes.func.isRequired,
-  getMyEvents: PropTypes.func.isRequired,
-  events: PropTypes.array.isRequired,
-  user: PropTypes.string.isRequired
+  getMyEvents: PropTypes.func,
+  events: PropTypes.array,
+  user: PropTypes.string
 };
 
 const mapStateToProps = state => ({
