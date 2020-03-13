@@ -8,7 +8,7 @@ import { getMyEvents } from "../../actions/event";
 const MyEvents = ({ getMyEvents, user, events: { events, loading } }) => {
   useEffect(() => {
     getMyEvents(user);
-  }, []);
+  }, [getMyEvents]);
 
   return loading ? (
     <Spinner />
