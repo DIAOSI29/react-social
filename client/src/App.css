@@ -572,7 +572,8 @@ button {
   background-color: #ff0077;
 }
 .blueText {
-  padding: 5px 30px;
+  border: 10px solid rgb(0, 162, 255);
+  border-radius: 20px;
   background-color: #0099ff;
 }
 .orangeText {

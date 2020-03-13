@@ -26,7 +26,7 @@ const Dashboard = ({
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">
         <i className="fas fa-user" />{" "}
-        <span class="user-name">{user && user.name}</span>
+        <span className="user-name">{user && user.name}</span>
       </p>
       {profile !== null ? (
         <Fragment>

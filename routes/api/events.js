@@ -169,10 +169,10 @@ router.put("/join/:id", auth, async (req, res) => {
   }
 });
 
-// @route    PUT api/events/quit/:id
-// @desc     quit an event
+// @route    PUT api/events/unjoin/:id
+// @desc     unjoin an event
 // @access   Private
-router.put("/quit/:id", auth, async (req, res) => {
+router.put("/unjoin/:id", auth, async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
 

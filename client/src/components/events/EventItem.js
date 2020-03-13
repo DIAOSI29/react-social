@@ -131,7 +131,7 @@ const EventItem = ({
             type="button"
             className="btn btn-light"
           >
-            <i class="fas fa-user-plus"></i>{" "}
+            <i className="fas fa-user-plus"></i>{" "}
             <span>{joins.length > 0 && <span>{joins.length}</span>}</span>
           </button>
           <button
@@ -148,13 +148,22 @@ const EventItem = ({
             )}
           </Link>
           {!auth.loading && user === auth.user._id && (
-            <button
-              onClick={() => deleteEvent(_id)}
-              type="button"
-              className="btn btn-danger"
-            >
-              <i className="fas fa-times" />
-            </button>
+            <div>
+              <button
+                onClick={() => deleteEvent(_id)}
+                type="button"
+                className="btn btn-danger"
+              >
+                <i className="fas fa-times" />
+              </button>
+              <div className="events">
+                {joins.map(join => (
+                  <div>
+                    {join.name}:{join.mobile}
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </Fragment>
       )}
