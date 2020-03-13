@@ -139,7 +139,7 @@ const EventItem = ({
             type="button"
             className="btn btn-light"
           >
-            <i className="fas fa-thumbs-down" />
+            <i className="fas fa-door-open" />
           </button>
           <Link to={`/events/${_id}`} className="btn btn-primary">
             Discussion{" "}
