@@ -37,7 +37,7 @@ MyEvents.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  events: state.events,
+  events: state.event.events,
   user: state.auth.user
 });
 
