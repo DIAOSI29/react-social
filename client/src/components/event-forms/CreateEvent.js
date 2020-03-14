@@ -6,6 +6,10 @@ import { createEvent } from "../../actions/event";
 import { getCurrentProfile } from "../../actions/profile";
 
 const CreateEvent = ({ createEvent, profile: { profile } }) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
+
   const name = profile.user.name;
   const avatar = profile.user.avatar;
   const [formData, setFormData] = useState({
@@ -43,10 +47,6 @@ const CreateEvent = ({ createEvent, profile: { profile } }) => {
       maxnumber: ""
     });
   };
-
-  useEffect(() => {
-    getCurrentProfile();
-  }, [getCurrentProfile]);
 
   return (
     <Fragment>
@@ -132,7 +132,7 @@ const CreateEvent = ({ createEvent, profile: { profile } }) => {
 
 CreateEvent.propTypes = {
   createEvent: PropTypes.func.isRequired,
-
+  getCurrentProfile: PropTypes.func.isRequired,
   event: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
 };
