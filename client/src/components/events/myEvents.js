@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 import EventItem from "./EventItem";
 import { getMyEvents } from "../../actions/event";
 
-const MyEvents = ({ getMyEvents, user, events: { events, loading } }) => {
+const MyEvents = ({ getMyEvents, user, events, loading }) => {
   useEffect(() => {
     getMyEvents(user);
   }, [getMyEvents]);
@@ -33,11 +33,13 @@ MyEvents.propTypes = {
   // loadUser: PropTypes.func.isRequired,
   getMyEvents: PropTypes.func,
   events: PropTypes.array,
-  user: PropTypes.string
+  user: PropTypes.string,
+  loading: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
   events: state.event.events,
+  loading: state.event.loading,
   user: state.auth.user
 });
 
