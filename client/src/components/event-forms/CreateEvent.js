@@ -44,9 +44,9 @@ const CreateEvent = ({ createEvent, profile: { profile } }) => {
     });
   };
 
-  // useEffect(() => {
-  //   getCurrentProfile();
-  // }, [getCurrentProfile]);
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
 
   return (
     <Fragment>
