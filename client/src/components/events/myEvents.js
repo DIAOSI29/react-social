@@ -8,8 +8,12 @@ import { loadUser } from "../../actions/auth";
 
 const MyEvents = ({ getMyEvents, loadUser, user, events, loading }) => {
   useEffect(() => {
-    loadUser(), getMyEvents(user._id);
-  }, [loadUser, getMyEvents]);
+    loadUser();
+  }, [loadUser]);
+
+  useEffect(() => {
+    getMyEvents(user._id), [getMyEvents];
+  });
 
   return loading ? (
     <Spinner />
