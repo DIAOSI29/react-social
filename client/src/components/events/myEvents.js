@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import EventItem from "./EventItem";
 import { getMyEvents } from "../../actions/event";
+import { loadUser } from "../../actions/auth";
 
-const MyEvents = ({ getMyEvents, user, events, loading }) => {
+const MyEvents = ({ getMyEvents, loadUser, user, events, loading }) => {
   useEffect(() => {
-    getMyEvents(user);
-  }, [getMyEvents]);
+    loadUser(), getMyEvents(user._id);
+  }, [loadUser, getMyEvents]);
 
   return loading ? (
     <Spinner />
@@ -30,10 +31,10 @@ const MyEvents = ({ getMyEvents, user, events, loading }) => {
 };
 
 MyEvents.propTypes = {
-  // loadUser: PropTypes.func.isRequired,
+  loadUser: PropTypes.func.isRequired,
   getMyEvents: PropTypes.func,
   events: PropTypes.array,
-  user: PropTypes.string,
+  user: PropTypes.object,
   loading: PropTypes.bool
 };
 
@@ -43,4 +44,4 @@ const mapStateToProps = state => ({
   user: state.auth.user
 });
 
-export default connect(mapStateToProps, { getMyEvents })(MyEvents);
+export default connect(mapStateToProps, { loadUser, getMyEvents })(MyEvents);
