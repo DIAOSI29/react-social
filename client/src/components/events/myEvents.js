@@ -12,8 +12,8 @@ const MyEvents = ({ getMyEvents, loadUser, user, events, loading }) => {
   }, [loadUser]);
 
   useEffect(() => {
-    getMyEvents(user._id), [getMyEvents];
-  });
+    getMyEvents(user._id);
+  }, [getMyEvents]);
 
   return loading ? (
     <Spinner />
