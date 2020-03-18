@@ -6,7 +6,7 @@ import { createEvent } from "../../actions/event";
 
 import { loadUser } from "../../actions/auth";
 
-const CreateEvent = ({ loadUser, createEvent }) => {
+const CreateEvent = ({ loadUser, user, createEvent }) => {
   useEffect(() => {
     loadUser();
   }, [loadUser]);
