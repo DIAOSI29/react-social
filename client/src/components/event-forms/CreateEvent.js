@@ -3,19 +3,16 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createEvent } from "../../actions/event";
-import { getCurrentProfile } from "../../actions/profile";
 
-const CreateEvent = ({
-  createEvent,
-  getCurrentProfile,
-  profile: { profile }
-}) => {
+import { loadUser } from "../../actions/auth";
+
+const CreateEvent = ({ loadUser, createEvent }) => {
   useEffect(() => {
-    getCurrentProfile();
-  }, [getCurrentProfile]);
+    loadUser();
+  }, [loadUser]);
 
-  const name = profile.user.name;
-  const avatar = profile.user.avatar;
+  const name = user.name;
+  const avatar = user.avatar;
   const [formData, setFormData] = useState({
     location: "",
     eventdate: "",
@@ -136,13 +133,13 @@ const CreateEvent = ({
 
 CreateEvent.propTypes = {
   createEvent: PropTypes.func.isRequired,
-  getCurrentProfile: PropTypes.func.isRequired,
+
+  loadUser: PropTypes.func.isRequired,
+
   event: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-  profile: state.profile
+  user: state.auth.user
 });
-export default connect(mapStateToProps, { createEvent, getCurrentProfile })(
-  CreateEvent
-);
+export default connect(mapStateToProps, { createEvent, loadUser })(CreateEvent);
