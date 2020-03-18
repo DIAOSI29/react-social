@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 import { createEvent } from "../../actions/event";
 import { getCurrentProfile } from "../../actions/profile";
 
-const CreateEvent = ({ createEvent, profile: { profile } }) => {
+const CreateEvent = ({
+  createEvent,
+  getCurrentProfile,
+  profile: { profile }
+}) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
